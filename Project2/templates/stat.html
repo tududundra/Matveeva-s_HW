@@ -1,0 +1,234 @@
+<html>
+<head>
+    <link href="/static/style.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bad+Script|Scada" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Stats</title>
+    <meta charset="utf-8">
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <link rel="stylesheet" href="normalize.css">
+    <style>
+        .tooltip{
+        position: absolute;
+        text-align: center;
+        width: 13%;
+        height:10%;
+        padding: 2vw;
+        font: 1.2vw sans-serif;
+        border: 0px;
+        border-radius: 8px;
+        color:black;
+        box-shadow: -3px 3px 15px #888888;
+        opacity:0;
+        }
+    </style>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+    <p>
+        <table class="headtable">
+            <tr>
+                <th><a href="{{ main_url }}">Анкета</a></th>
+                <th><a href="{{ stats_url }}">Статистика</a></th>
+                <th><a href="{{ json_url }}">Json</a></th>
+                <th><a href="{{ search_url }}">Поиск</a></th>
+            </tr>
+        </table>
+    </p>
+    <p>
+        <h1 class="head_line">Статистика по результатам, полу и возрасту</h1>
+    </p>
+    <div id = "svgContent"></div>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+        <p>
+            <script>
+                {% for one, two in stat.items() %}
+
+                var data = [
+                    {"variant":"рАкушка","number":{{one}}},
+                    {"variant":"ракУшка","number":{{two}}},];
+                var margin = {top:40,left:40,right:40,bottom:40};
+                width = 300;
+                height = 300;
+                radius = Math.min(width-100,height-100)/2;
+                var color = d3.scale.category10();
+                var arc = d3.svg.arc()
+                .outerRadius(radius -230)
+                .innerRadius(radius - 50)
+		        .cornerRadius(20);
+                var arcOver = d3.svg.arc()
+                .outerRadius(radius +50)
+                .innerRadius(0);
+
+                var a=width/2 - 20;
+                var b=height/2 - 90;
+                var svg = d3.select("#svgContent").append("svg")
+                .attr("viewBox", "0 0 " + width + " " + height/2)
+                .attr("preserveAspectRatio", "xMidYMid meet")
+                .append("g")
+                .attr("transform","translate("+a+","+b+")");
+
+		        div = d3.select("body")
+                .append("div")
+                .attr("class", "tooltip");
+                var pie = d3.layout.pie()
+                .sort(null)
+                .value(function(d){return d.number;})
+		        .padAngle(.02);
+                var g = svg.selectAll(".arc")
+                .data(pie(data))
+                .enter()
+                .append("g")
+                .attr("class","arc")
+                .on("mousemove",function(d){
+        	        var mouseVal = d3.mouse(this);
+        	        div.style("display","none");
+        	        div
+        	        .html(d.data.variant+"</br>"+d.data.number)
+                    .style("left", (d3.event.pageX+12) + "px")
+                    .style("top", (d3.event.pageY-10) + "px")
+                    .style("opacity", 1)
+                    .style("display","block");
+                    })
+                .on("mouseout",function(){div.html(" ").style("display","none");});
+
+
+		        g.append("path")
+		        .attr("d",arc)
+		        .style("fill",function(d){return color(d.data.age);})
+		        .attr("d", arc);;
+
+                {% endfor %}
+            </script>
+        </p>
+        <p>
+            <script>
+                {% for gen1, sex1 in sex1.items() %}
+                {% for gen2, sex2 in sex2.items() %}
+                {% for gen3, sex3 in sex3.items() %}
+
+                var data = [{"gender":"Мужчины","population":{{sex1}}},
+                    {"gender":"Женщины","population":{{sex2}}},
+                    {"gender":"Затрудняются ответить","population":{{sex3}}},];
+                var margin = {top:40,left:40,right:40,bottom:40};
+                width = 300;
+                height = 300;
+                radius = Math.min(width-100,height-100)/2;
+                var color = d3.scale.category10();
+                var arc = d3.svg.arc()
+                .outerRadius(radius -230)
+                .innerRadius(radius - 50)
+		        .cornerRadius(20);
+                var arcOver = d3.svg.arc()
+                .outerRadius(radius +50)
+                .innerRadius(0);
+
+                var a=width/2 - 20;
+                var b=height/2 - 90;
+                var svg = d3.select("#svgContent").append("svg")
+                .attr("viewBox", "0 0 " + width + " " + height/2)
+                .attr("preserveAspectRatio", "xMidYMid meet")
+                .append("g")
+                .attr("transform","translate("+a+","+b+")");
+
+		        div = d3.select("body")
+                .append("div")
+                .attr("class", "tooltip");
+                var pie = d3.layout.pie()
+                .sort(null)
+                .value(function(d){return d.population;})
+		        .padAngle(.02);
+                var g = svg.selectAll(".arc")
+                .data(pie(data))
+                .enter()
+                .append("g")
+                .attr("class","arc")
+                .on("mousemove",function(d){
+        	        var mouseVal = d3.mouse(this);
+        	        div.style("display","none");
+        	        div
+        	        .html(d.data.gender+"</br>"+d.data.population)
+                    .style("left", (d3.event.pageX+12) + "px")
+                    .style("top", (d3.event.pageY-10) + "px")
+                    .style("opacity", 1)
+                    .style("display","block");
+                })
+                .on("mouseout",function(){div.html(" ").style("display","none");});
+        
+
+		        g.append("path")
+		        .attr("d",arc)
+		        .style("fill",function(d){return color(d.data.age);})
+		        .attr("d", arc);;
+
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+            </script>
+        </p>
+        <p>
+            <script>
+                {% for age1, age2 in age12.items() %}
+	            {% for age3, age4 in age34.items() %}
+
+                var data = [{"category":"<19","people":{{age1}}},
+                    {"category":"19-30","people":{{age2}}},
+                    {"category":"31-45","people":{{age3}}},
+                    {"category":"45+","people":{{age4}}},];
+                var margin = {top:40,left:40,right:40,bottom:40};
+                width = 300;
+                height = 300;
+                radius = Math.min(width-100,height-100)/2;
+                var color = d3.scale.category10();
+                var arc = d3.svg.arc()
+                .outerRadius(radius -230)
+                .innerRadius(radius - 50)
+		        .cornerRadius(20);
+                var arcOver = d3.svg.arc()
+                .outerRadius(radius +50)
+                .innerRadius(0);
+
+                var a=width/2 - 20;
+                var b=height/2 - 90;
+                var svg = d3.select("#svgContent").append("svg")
+                  .attr("viewBox", "0 0 " + width + " " + height/2)
+                  .attr("preserveAspectRatio", "xMidYMid meet")
+                          .append("g")
+                  .attr("transform","translate("+a+","+b+")");
+
+		          div = d3.select("body")
+                .append("div")
+                .attr("class", "tooltip");
+                var pie = d3.layout.pie()
+                  .sort(null)
+                  .value(function(d){return d.people;})
+		          .padAngle(.02);
+                var g = svg.selectAll(".arc")
+                .data(pie(data))
+                .enter()
+                .append("g")
+                .attr("class","arc")
+                .on("mousemove",function(d){
+                	var mouseVal = d3.mouse(this);
+                	div.style("display","none");
+                	div
+                	.html("Возраст:"+d.data.category+"</br>"+d.data.people)
+                    .style("left", (d3.event.pageX+12) + "px")
+                    .style("top", (d3.event.pageY-10) + "px")
+                    .style("opacity", 1)
+                    .style("display","block");
+                })
+                .on("mouseout",function(){div.html(" ").style("display","none");});
+
+
+		        g.append("path")
+		        .attr("d",arc)
+		        .style("fill",function(d){return color(d.data.age);})
+		         .attr("d", arc);;
+
+                {% endfor %}
+                {% endfor %}
+            </script>
+        </p>
+</body>
+</html>

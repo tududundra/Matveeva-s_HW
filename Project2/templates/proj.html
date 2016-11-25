@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Анкета</title>
+    <link href="/static/style.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bad+Script|Scada" rel="stylesheet">
+</head>
+<body>
+    <p>
+        <table class="headtable">
+            <tr>
+                <th><a href="{{ main_url }}">Анкета</a></th>
+                <th><a href="{{ stats_url }}">Статистика</a></th>
+                <th><a href="{{ json_url }}">Json</a></th>
+                <th><a href="{{ search_url }}">Поиск</a></th>
+                </tr>
+        </table>
+    </p>
+    <h1 class="head_line">Анкета</h1>
+    <form>
+        <p>
+            <b>Ваше имя:</b><br>
+            <input type="text" placeholder="Имя" name="name" size="40" autocomplete="off">
+        </p>
+        <p>
+            <b>Какой вариант вы считаете более приемлемым?</b><Br>
+            <input type="radio" name="variant" value="рАкушка" checked> рАкушка<Br>
+            <input type="radio" name="variant" value="ракУшка"> ракУшка<Br>
+        </p>
+        <p>
+            <b>В каком городе вы родились?</b><br>
+            <input type="text" placeholder="Город" name="town" size="40" autocomplete="off">
+        </p>
+        <p>
+            <b>Сколько вам лет?</b><br>
+            <input type="number" placeholder="Возраст" name="age" size="40" autocomplete="off" required>
+        </p>
+        <p>
+            <b>Ваш пол:</b><br>
+            <input type="radio" name="sex" value="М"> М<Br>
+            <input type="radio" name="sex" value="Ж"> Ж<Br>
+            <input type="radio" name="sex" value="Затрудняюсь ответить" checked> Затрудняюсь ответить<Br>
+        </p>
+        <p>
+            <b>Какое у вас образование?</b><br>
+            <input type="radio" name="edu" value="Полное высшее"> Полное высшее<Br>
+            <input type="radio" name="edu" value="Неполное высшее" checked> Неполное высшее<Br>
+            <input type="radio" name="edu" value="Полное специальное"> Полное специальное<Br>
+            <input type="radio" name="edu" value="Неполное специальное"> Неполное специальное<Br>
+            <input type="radio" name="edu" value="Полное среднее"> Полное среднее<Br>
+            <input type="radio" name="edu" value="Неполное среднее"> Неполное среднее<Br>
+        </p>
+        <p>Комментарий<Br>
+            <textarea id="inputSuccess" name="comment" placeholder="Текст комментария" cols="40" rows="3" autocomplete="off"></textarea>
+        </p>
+        <p>
+            <button class="myButton" type="submit" value = "Отправить">Отправить</button>
+        </p>
+    </form>
+</body>
+</html>
