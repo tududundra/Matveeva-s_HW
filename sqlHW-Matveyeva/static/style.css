@@ -1,0 +1,60 @@
+body {
+    background: url(168643-minimalism-green-geometry-abstract-low_poly-digital_art-artwork.png) center center;
+    background-attachment: fixed;
+    text-align: center;
+}
+
+form {
+    font-family: 'Underdog', cursive;
+    font-size: 20px;
+    border: 3px solid #a6c6a4;
+    margin: auto;
+    padding:0;
+    box-sizing:border-box;
+    width: 600px
+}
+
+.head_line {
+    font-family: 'Underdog', cursive;
+}
+
+.myButton {
+    -moz-box-shadow: 0px 10px 14px -7px #2d6d32;
+	-webkit-box-shadow: 0px 10px 14px -7px #2d6d32;
+	box-shadow: 0px 10px 14px -7px #2d6d32;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #46a138), color-stop(1, #3f8c31));
+	background:-moz-linear-gradient(top, #46a138 5%, #3d802f 100%);
+	background:-webkit-linear-gradient(top, #439535 5%, #3d802f 100%);
+	background:-o-linear-gradient(top, #439535 5%, #3d802f 100%);
+	background:-ms-linear-gradient(top, #439535 5%, #3f8c31 100%);
+	background:linear-gradient(to bottom, #46a138 5%, #3f8c31 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2d6d32', endColorstr='#46a138',GradientType=0);
+	background-color: #09741c;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+    border: 1px solid #09741c;
+	display:inline-block;
+	cursor:pointer;
+	color: #0a330a;
+	font-family:'Underdog', cursive;
+	font-size:15px;
+	font-weight:bold;
+	padding:13px 22px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #09741c;
+}
+.myButton:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2d6d32), color-stop(1, #439535));
+	background:-moz-linear-gradient(top, #2d6d32 5%, #439535 100%);
+	background:-webkit-linear-gradient(top, #2d6d32 5%, #439535 100%);
+	background:-o-linear-gradient(top, #2d6d32 5%, #439535 100%);
+	background:-ms-linear-gradient(top, #2d6d32 5%, #439535 100%);
+	background:linear-gradient(to bottom, #2d6d32 5%, #439535 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#468ccf', endColorstr='#63b8ee',GradientType=0);
+	background-color: #0b4f0a;
+}
+.myButton:active {
+    position:relative;
+	top:1px;
+}
