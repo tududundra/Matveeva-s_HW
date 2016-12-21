@@ -40,7 +40,6 @@ def dict_maker():
     for el in arr:
         el = el.strip('\n')
         if '}' in el:
-            print(el)
             el_arr = el.split('{')
             el_arr[1] = el_arr[1].strip('}?-\n\r')
             if el_arr[1] in dic:
@@ -83,7 +82,6 @@ def sec_table_maker(text_arr):  # id token пункт_слева пункт_сп
     text = re.sub(' ?; ?', ' ; ; ', text)
     text = re.sub(' ?- ', ' - - ', text)
     text_arr = text.split()
-    print(text_arr)
     for el in text_arr:
         if el in punct:
             continue
@@ -91,7 +89,6 @@ def sec_table_maker(text_arr):  # id token пункт_слева пункт_сп
             work_el = el.lower()
             st = '"(\d+)","' + work_el + '",'
             id_lemma = re.findall(st, ins_text)
-            print(id_lemma)
             lem = ''.join(id_lemma)
             if text_arr.index(el) > 0:
                 left_el = text_arr[text_arr.index(el) - 1]
@@ -117,7 +114,6 @@ def sec_table_maker(text_arr):  # id token пункт_слева пункт_сп
                     ins_arr.append(string)
                     id_ += 1
                     text_num += 1
-    print(ins_arr)
     ins = ''.join(ins_arr)
     f.write(ins)
 
