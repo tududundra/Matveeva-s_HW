@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response list="true">
+ <count>5</count>
+ <comment>
+  <cid>160361</cid>
+  <uid>215433430</uid>
+  <from_id>215433430</from_id>
+  <date>1492205645</date>
+  <text>Адрес не увидела.....</text>
+ </comment>
+ <comment>
+  <cid>160362</cid>
+  <uid>215433430</uid>
+  <from_id>215433430</from_id>
+  <date>1492205686</date>
+  <text>В самом низу увидела....</text>
+ </comment>
+ <comment>
+  <cid>160381</cid>
+  <uid>38470242</uid>
+  <from_id>38470242</from_id>
+  <date>1492213415</date>
+  <text>[id215433430|Надежда], это один вход с аптекой &quot;Живика&quot;, если что)</text>
+  <reply_to_uid>215433430</reply_to_uid>
+  <reply_to_cid>160362</reply_to_cid>
+ </comment>
+ <comment>
+  <cid>160440</cid>
+  <uid>22237069</uid>
+  <from_id>22237069</from_id>
+  <date>1492267425</date>
+  <text>Очень хороший ассортимент чая! Девочка продавец умница!</text>
+ </comment>
+ <comment>
+  <cid>160447</cid>
+  <uid>38470242</uid>
+  <from_id>38470242</from_id>
+  <date>1492271514</date>
+  <text>[id22237069|Дмитрий], спасибо☺️ мы стараемся!</text>
+  <reply_to_uid>22237069</reply_to_uid>
+  <reply_to_cid>160440</reply_to_cid>
+ </comment>
+</response>
