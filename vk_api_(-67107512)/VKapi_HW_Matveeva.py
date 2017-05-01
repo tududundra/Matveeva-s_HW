@@ -22,7 +22,11 @@ def info_finder(data):
     d = {}
     for el in data:
         if '<id>' in el:
-            el = html.unescape(el)
+            print(el)
+            if ' &' in el:
+                el = re.sub('(&.+;)+', '', el)
+            else:
+                el = re.sub('(&.+;)+', ' ', el)
             el = re.sub('<br>', ' ', el)
             #print(el)
             post_id = re.findall(
@@ -89,6 +93,10 @@ def Comments_dowloader(d):
                         + post_id + '&offset=' + str(off) + '&count=' + str(pack))
                     response = urllib.request.urlopen(req)
                     result = response.read().decode('utf-8')
+                    if ' &' in result:
+                        result = re.sub('(&.+;)+', '', result)
+                    else:
+                        result = re.sub('(&.+;)+', ' ', result)
                     res += result
                     #print(result)
             else:
@@ -97,6 +105,10 @@ def Comments_dowloader(d):
                     + post_id + '&count=' + pair[1][1])
                 response = urllib.request.urlopen(req)
                 result = response.read().decode('utf-8')
+                if ' &' in result:
+                    result = re.sub('(&.+;)+', '', result)
+                else:
+                    result = re.sub('(&.+;)+', ' ', result)
                 res += result
                 #print(result)
         arr = []
@@ -107,7 +119,7 @@ def Comments_dowloader(d):
     f = open('comments.txt', 'w', encoding='UTF-8')
     f.write(res)
     f.close()
-        #print(dic)
+    print(dic)
     return dic
 
 
