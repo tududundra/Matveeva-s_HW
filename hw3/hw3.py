@@ -31,7 +31,6 @@ def reader():
 
 def cleaner(text_arr):
     for el in text_arr:
-        '<.+?>'.sub(' ', el)
         el.replace('\xa0', ' ')
         html.unescape(el)
     return text_arr
